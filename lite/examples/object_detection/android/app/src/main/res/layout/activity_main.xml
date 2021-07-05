@@ -8,8 +8,8 @@
     android:gravity="center">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
         android:id="@+id/imageDisplay"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"/>
@@ -23,12 +23,30 @@
         android:layout_below="@+id/imageDisplay"
         android:layout_marginBottom="10dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_details"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/TxtOCr"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timerTxt"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/image_details"
+        android:layout_marginBottom="10dp"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Btn_camera"
         android:text="camera"
-        android:layout_below="@+id/TxtOCr"
+        android:layout_below="@+id/timerTxt"
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"

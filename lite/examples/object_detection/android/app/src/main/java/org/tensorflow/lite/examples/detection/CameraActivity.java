@@ -97,9 +97,7 @@ public abstract class CameraActivity extends AppCompatActivity
   private ImageView plusImageView, minusImageView;
   private SwitchCompat apiSwitchCompat;
   private TextView threadsTextView;
-  public static final String TESS_DATA = "/tessdata/";
-  private static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/Tess";
-  private String FileName = "eng.traineddata";
+
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -111,7 +109,6 @@ public abstract class CameraActivity extends AppCompatActivity
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
-    prepareTesData();
     if (hasPermission()) {
       setFragment();
     } else {
@@ -189,30 +186,6 @@ public abstract class CameraActivity extends AppCompatActivity
     return rgbBytes;
   }
 
-  private void prepareTesData(){
-        try {
-          File dir = getExternalFilesDir(TESS_DATA);
-          if(!dir.exists()){
-            if(!dir.mkdir())
-              Toast.makeText(getApplicationContext(), "the folder " + dir.getPath() + "was not created", Toast.LENGTH_SHORT).show();
-          }
-          String pathToDataFile = dir + "/" + FileName;
-          if(!(new File(pathToDataFile)).exists()){
-            InputStream in = getAssets().open(FileName);
-            OutputStream out = new FileOutputStream(pathToDataFile);
-            byte [] buffer = new byte[1024];
-            int len;
-            while((len = in.read(buffer)) > 0){
-              out.write(buffer, 0, len);
-            }
-            in.close();
-            out.close();
-          }
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-
-  }
 
   protected int getLuminanceStride() {
     return yRowStride;
